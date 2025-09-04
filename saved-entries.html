@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saved Entries</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+body { font-family: Arial, sans-serif; padding: 20px; }
+nav a.active { background: #ff9800; font-weight: bold; }
+.day-log { background: #f4f4f4; border-radius: 5px; margin-bottom: 10px; }
+.day-header { padding: 10px 15px; cursor: pointer; font-weight: bold; background: #4CAF50; color: white; border-radius: 5px; }
+.day-header:hover { background: #45a049; }
+.day-content { display: none; padding: 10px 20px; }
+.entry { padding: 5px 0; border-bottom: 1px solid #ddd; }
+.entry:last-child { border-bottom: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Saved Entries</h1>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="meal-plan.html">Meal Plan</a>
+  <a href="workout-plan.html">Workout Plan</a>
+  <a href="tips.html">Tips</a>
+  <a href="daily-log.html">Daily Log</a>
+  <a href="saved-entries.html" class="active">Saved Entries</a>
+  <a href="progress-tracker.html" >Progress Tracker</a>
+
+</nav>
+
+<section class="log-section" id="logSection">
+  <!-- Entries grouped by date will appear here -->
+</section>
+
+<script>
+// Load entries from localStorage
+function displayEntries() {
+  const logSection = document.getElementById('logSection');
+  const entries = JSON.parse(localStorage.getItem('foodEntries')) || [];
+
+  // Group entries by date
+  const grouped = {};
+  entries.forEach(entry => {
+    if (!grouped[entry.date]) grouped[entry.date] = [];
+    grouped[entry.date].push(entry);
+  });
+
+  logSection.innerHTML = '';
+
+  // Sort dates descending
+  const sortedDates = Object.keys(grouped).sort((a,b) => new Date(b) - new Date(a));
+
+  sortedDates.forEach(date => {
+    const dayDiv = document.createElement('div');
+    dayDiv.className = 'day-log';
+
+    const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
+    const readableDate = new Date(date).toLocaleDateString(undefined, options);
+
+    const header = document.createElement('div');
+    header.className = 'day-header';
+    header.textContent = readableDate;
+
+    const content = document.createElement('div');
+    content.className = 'day-content';
+
+    grouped[date].forEach(entry => {
+      const entryDiv = document.createElement('div');
+      entryDiv.className = 'entry';
+      entryDiv.innerHTML = `<strong>${entry.mealTime}</strong>: ${entry.foodItems}`;
+      content.appendChild(entryDiv);
+    });
+
+    header.addEventListener('click', () => {
+      content.style.display = content.style.display === 'block' ? 'none' : 'block';
+    });
+
+    dayDiv.appendChild(header);
+    dayDiv.appendChild(content);
+    logSection.appendChild(dayDiv);
+  });
+}
+
+window.onload = displayEntries;
+</script>
+
+</body>
+</html>

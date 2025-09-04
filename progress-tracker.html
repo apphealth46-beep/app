@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Progress Tracker</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+body { font-family: Arial, sans-serif; padding: 20px; }
+nav a.active { background: #ff9800; font-weight: bold; }
+form { max-width: 500px; margin: 0 auto; }
+label { display: block; margin-top: 15px; font-weight: bold; }
+input[type="date"], input[type="number"] { width: 100%; padding: 8px; margin-top: 5px; border-radius: 5px; border: 1px solid #ccc; }
+button { margin-top: 15px; padding: 10px 15px; background: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; }
+button:hover { background: #45a049; }
+.success { margin-top: 15px; color: green; font-weight: bold; text-align: center; }
+.progress-section { max-width: 600px; margin: 30px auto; }
+.day-log { background: #f4f4f4; border-radius: 5px; margin-bottom: 10px; }
+.day-header { padding: 10px 15px; cursor: pointer; font-weight: bold; background: #4CAF50; color: white; border-radius: 5px; }
+.day-header:hover { background: #45a049; }
+.day-content { display: none; padding: 10px 20px; }
+.entry { padding: 5px 0; border-bottom: 1px solid #ddd; }
+.entry:last-child { border-bottom: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Progress Tracker</h1>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="meal-plan.html">Meal Plan</a>
+  <a href="workout-plan.html">Workout Plan</a>
+  <a href="tips.html">Tips</a>
+  <a href="daily-log.html">Daily Log</a>
+  <a href="saved-entries.html">Saved Entries</a>
+  <a href="progress-tracker.html" class="active">Progress Tracker</a>
+
+</nav>
+
+<section>
+  <form id="progressForm">
+    <label for="date">Date</label>
+    <input type="date" id="date" required>
+
+    <label for="weight">Weight (kg)</label>
+    <input type="number" id="weight" step="0.1" required>
+
+    <label for="waist">Waist (cm)</label>
+    <input type="number" id="waist" step="0.1">
+
+    <button type="submit">Save Progress</button>
+    <div class="success" id="successMsg" style="display:none;">Progress saved!</div>
+  </form>
+</section>
+
+<section class="progress-section" id="progressSection">
+  <h2>Saved Progress</h2>
+</section>
+
+<script>
+// Save progress to localStorage
+document.getElementById('progressForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const date = document.getElementById('date').value;
+  const weight = parseFloat(document.getElementById('weight').value);
+  const waist = parseFloat(document.getElementById('waist').value);
+
+  if (!date || !weight) return;
+
+  let progress = JSON.parse(localStorage.getItem('progressData')) || [];
+  progress.push({ date, weight, waist });
+  localStorage.setItem('progressData', JSON.stringify(progress));
+
+  document.getElementById('successMsg').style.display = 'block';
+  setTimeout(() => document.getElementById('successMsg').style.display = 'none', 2000);
+
+  this.reset();
+  displayProgress();
+});
+
+// Display saved progress grouped by date (collapsible)
+function displayProgress() {
+  const progressSection = document.getElementById('progressSection');
+  const progress = JSON.parse(localStorage.getItem('progressData')) || [];
+
+  const grouped = {};
+  progress.forEach(p => {
+    if (!grouped[p.date]) grouped[p.date] = [];
+    grouped[p.date].push(p);
+  });
+
+  const sortedDates = Object.keys(grouped).sort((a,b) => new Date(b) - new Date(a));
+  progressSection.innerHTML = '<h2>Saved Progress</h2>';
+
+  sortedDates.forEach(date => {
+    const dayDiv = document.createElement('div');
+    dayDiv.className = 'day-log';
+    const readableDate = new Date(date).toLocaleDateString(undefined, { weekday:'long', year:'numeric', month:'short', day:'numeric' });
+
+    const header = document.createElement('div');
+    header.className = 'day-header';
+    header.textContent = readableDate;
+
+    const content = document.createElement('div');
+    content.className = 'day-content';
+
+    grouped[date].forEach(entry => {
+      const entryDiv = document.createElement('div');
+      entryDiv.className = 'entry';
+      entryDiv.innerHTML = `<strong>Weight:</strong> ${entry.weight} kg | <strong>Waist:</strong> ${entry.waist || '-'} cm`;
+      content.appendChild(entryDiv);
+    });
+
+    header.addEventListener('click', () => {
+      content.style.display = content.style.display === 'block' ? 'none' : 'block';
+    });
+
+    dayDiv.appendChild(header);
+    dayDiv.appendChild(content);
+    progressSection.appendChild(dayDiv);
+  });
+}
+
+window.onload = displayProgress;
+</script>
+
+</body>
+</html>

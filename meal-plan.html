@@ -6,14 +6,30 @@
 <title>Meal Plan</title>
 <link rel="stylesheet" href="css/style.css">
 <style>
-  .day-header {
-    background:#4CAF50; color:white; padding:10px; cursor:pointer; margin-bottom:5px; border-radius:5px;
-  }
-  .day-header:hover { background:#45a049; }
-  .day-content { display:none; padding:10px; background:#f4f4f4; border-radius:5px; margin-bottom:10px; }
-  .meal-item { display:flex; justify-content:space-between; padding:3px 0; border-bottom:1px solid #ddd; }
-  .meal-item:last-child { border-bottom:none; }
-  .meal-name { font-weight:bold; }
+.day-header {
+  background:#4CAF50; color:white; padding:10px; cursor:pointer; margin-bottom:5px; border-radius:5px;
+}
+.day-header:hover { background:#45a049; }
+.day-content { display:none; padding:10px; background:#f4f4f4; border-radius:5px; margin-bottom:10px; }
+.meal-section h3 {
+  background: #4CAF50;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+.meal-section ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+.meal-section ul li {
+  padding: 3px 0;
+}
+nav a.active {
+  background: #ff9800;
+  font-weight: bold;
+}
 </style>
 </head>
 <body>
@@ -23,64 +39,251 @@
 
 <nav>
   <a href="index.html">Home</a>
+  <a href="meal-plan.html" class="active">Meal Plan</a>
   <a href="workout-plan.html">Workout Plan</a>
   <a href="tips.html">Tips</a>
+  <a href="daily-log.html" >Daily Log</a>
+  <a href="saved-entries.html" >Saved Entries</a>
+  <a href="progress-tracker.html" >Progress Tracker</a>
+
 </nav>
 
 <section>
 
+<!-- Repeat this structure for each day -->
+
   <div class="day">
     <div class="day-header">Day 1</div>
     <div class="day-content">
-      <div class="meal-item"><span class="meal-name">12pm: Protein Shake + 2 Boiled Eggs + Bread + Salad</span><span>Protein: 51g | Calories: 340</span></div>
-      <div class="meal-item"><span class="meal-name">3pm: Greek Yogurt + Apple</span><span>Protein: 10g | Calories: 130</span></div>
-      <div class="meal-item"><span class="meal-name">7pm: 120g Chicken + ½ Cup Rice + Veggies + 1 tsp Olive Oil</span><span>Protein: 30g | Calories: 350</span></div>
-      <div class="meal-item"><span class="meal-name">Optional: 1 Boiled Egg or 10 Almonds</span><span>Protein: 6g | Calories: 70</span></div>
+      <div class="meal-section">
+        <h3>12pm</h3>
+        <ul>
+          <li>Protein Powder Shake (Protein: 25g | Calories: 120)</li>
+          <li>2 Boiled Eggs (Protein: 12g | Calories: 140)</li>
+          <li>1 Slice Bread (Protein: 3g | Calories: 70)</li>
+          <li>Salad (Protein: 1g | Calories: 10)</li>
+        </ul>
+      </div>
+      <div class="meal-section">
+        <h3>3pm</h3>
+        <ul>
+          <li>Greek Yogurt (Protein: 10g | Calories: 100)</li>
+          <li>1 Apple (Protein: 0g | Calories: 52)</li>
+        </ul>
+      </div>
+      <div class="meal-section">
+        <h3>7pm</h3>
+        <ul>
+          <li>120g Chicken (Protein: 30g | Calories: 200)</li>
+          <li>½ Cup Rice (Protein: 3g | Calories: 130)</li>
+          <li>Veggies (Protein: 2g | Calories: 20)</li>
+          <li>1 tsp Olive Oil (Protein: 0g | Calories: 40)</li>
+          <li>Optional: 1 Boiled Egg (Protein: 6g | Calories: 70)</li>
+          <li>Optional: 10 Almonds (Protein: 2g | Calories: 60)</li>
+        </ul>
+      </div>
     </div>
   </div>
 
+  <!-- Day 2 -->
   <div class="day">
     <div class="day-header">Day 2</div>
     <div class="day-content">
-      <div class="meal-item"><span class="meal-name">12pm: Tuna Salad + 1 tsp Olive Oil</span><span>Protein: 30g | Calories: 250</span></div>
-      <div class="meal-item"><span class="meal-name">3pm: Banana + 10 Almonds</span><span>Protein: 2g | Calories: 120</span></div>
-      <div class="meal-item"><span class="meal-name">7pm: 120g Grilled Fish + ½ Medium Sweet Potato + Veggies</span><span>Protein: 30g | Calories: 320</span></div>
-      <div class="meal-item"><span class="meal-name">Optional: 1 Boiled Egg</span><span>Protein: 6g | Calories: 70</span></div>
+      <div class="meal-section">
+        <h3>12pm</h3>
+        <ul>
+          <li>Protein Powder Shake (Protein: 25g | Calories: 120)</li>
+          <li>Tuna (100g) (Protein: 25g | Calories: 120)</li>
+          <li>Lettuce + Tomato + Cucumber (Protein: 1g | Calories: 20)</li>
+        </ul>
+      </div>
+      <div class="meal-section">
+        <h3>3pm</h3>
+        <ul>
+          <li>1 Banana (Protein: 1g | Calories: 90)</li>
+          <li>10 Almonds (Protein: 2g | Calories: 60)</li>
+        </ul>
+      </div>
+      <div class="meal-section">
+        <h3>7pm</h3>
+        <ul>
+          <li>120g Grilled Fish (Protein: 30g | Calories: 200)</li>
+          <li>½ Medium Sweet Potato (Protein: 1g | Calories: 90)</li>
+          <li>Steamed Veggies (Protein: 2g | Calories: 20)</li>
+          <li>1 tsp Olive Oil (Protein: 0g | Calories: 40)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 3 -->
+  <div class="day">
+    <div class="day-header">Day 3</div>
+    <div class="day-content">
+      <div class="meal-section">
+        <h3>12pm</h3>
+        <ul>
+          <li>Protein Powder Shake (Protein: 25g | Calories: 120)</li>
+          <li>2 Scrambled Eggs (Protein: 12g | Calories: 140)</li>
+          <li>1 Slice Bread (Protein: 3g | Calories: 70)</li>
+          <li>½ Avocado (Protein: 1g | Calories: 120)</li>
+          <li>Tomato slices (Protein: 1g | Calories: 10)</li>
+        </ul>
+      </div>
+      <div class="meal-section">
+        <h3>3pm</h3>
+        <ul>
+          <li>Greek Yogurt (Protein: 10g | Calories: 100)</li>
+          <li>Handful of Berries (Protein: 1g | Calories: 50)</li>
+        </ul>
+      </div>
+      <div class="meal-section">
+        <h3>7pm</h3>
+        <ul>
+          <li>120g Lean Beef Mince (Protein: 30g | Calories: 200)</li>
+          <li>½ Cup Rice (Protein: 3g | Calories: 130)</li>
+          <li>Steamed Veggies (Protein: 2g | Calories: 20)</li>
+          <li>Optional: 10 Almonds (Protein: 2g | Calories: 60)</li>
+        </ul>
+      </div>
     </div>
   </div>
 
   <div class="day">
-    <div class="day-header">Day 3</div>
+    <div class="day-header">Day 4</div>
     <div class="day-content">
-      <div class="meal-item"><span class="meal-name">12pm: 2 Scrambled Eggs + Bread + ½ Avocado + Tomato</span><span>Protein: 14g | Calories: 300</span></div>
-      <div class="meal-item"><span class="meal-name">3pm: Greek Yogurt + Berries</span><span>Protein: 10g | Calories: 120</span></div>
-      <div class="meal-item"><span class="meal-name">7pm: 120g Lean Beef Mince + ½ Cup Rice + Veggies</span><span>Protein: 30g | Calories: 350</span></div>
-      <div class="meal-item"><span class="meal-name">Optional: 10 Almonds</span><span>Protein: 2g | Calories: 70</span></div>
+      <div class="meal-section">
+        <h3>12pm</h3>
+        <ul>
+          <li>Protein Powder Shake (Protein: 25g | Calories: 120)</li>
+          <li>2 Boiled Eggs (Protein: 12g | Calories: 140)</li>
+          <li>1 Slice Bread (Protein: 3g | Calories: 70)</li>
+          <li>Salad (Protein: 1g | Calories: 10)</li>
+        </ul>
+      </div>
+      <div class="meal-section">
+        <h3>3pm</h3>
+        <ul>
+          <li>Greek Yogurt (Protein: 10g | Calories: 100)</li>
+          <li>1 Apple (Protein: 0g | Calories: 52)</li>
+        </ul>
+      </div>
+      <div class="meal-section">
+        <h3>7pm</h3>
+        <ul>
+          <li>120g Chicken (Protein: 30g | Calories: 200)</li>
+          <li>½ Cup Rice (Protein: 3g | Calories: 130)</li>
+          <li>Veggies (Protein: 2g | Calories: 20)</li>
+          <li>1 tsp Olive Oil (Protein: 0g | Calories: 40)</li>
+        </ul>
+      </div>
     </div>
   </div>
 
-  <!-- Repeat Days 4–7 with same format -->
+  <div class="day">
+    <div class="day-header">Day 5</div>
+    <div class="day-content">
+      <div class="meal-section">
+        <h3>12pm</h3>
+        <ul>
+          <li>Protein Powder Shake (Protein: 25g | Calories: 120)</li>
+          <li>Tuna (100g) (Protein: 25g | Calories: 120)</li>
+          <li>Lettuce + Tomato + Cucumber (Protein: 1g | Calories: 20)</li>
+        </ul>
+      </div>
+      <div class="meal-section">
+        <h3>3pm</h3>
+        <ul>
+          <li>1 Banana (Protein: 1g | Calories: 90)</li>
+          <li>10 Almonds (Protein: 2g | Calories: 60)</li>
+        </ul>
+      </div>
+      <div class="meal-section">
+        <h3>7pm</h3>
+        <ul>
+          <li>120g Grilled Fish (Protein: 30g | Calories: 200)</li>
+          <li>½ Medium Sweet Potato (Protein: 1g | Calories: 90)</li>
+          <li>Steamed Veggies (Protein: 2g | Calories: 20)</li>
+          <li>1 tsp Olive Oil (Protein: 0g | Calories: 40)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-header">Day 6</div>
+    <div class="day-content">
+      <div class="meal-section">
+        <h3>12pm</h3>
+        <ul>
+          <li>Protein Powder Shake (Protein: 25g | Calories: 120)</li>
+          <li>2 Scrambled Eggs (Protein: 12g | Calories: 140)</li>
+          <li>1 Slice Bread (Protein: 3g | Calories: 70)</li>
+          <li>½ Avocado (Protein: 1g | Calories: 120)</li>
+        </ul>
+      </div>
+      <div class="meal-section">
+        <h3>3pm</h3>
+        <ul>
+          <li>Greek Yogurt (Protein: 10g | Calories: 100)</li>
+          <li>Handful of Berries (Protein: 1g | Calories: 50)</li>
+        </ul>
+      </div>
+      <div class="meal-section">
+        <h3>7pm</h3>
+        <ul>
+          <li>120g Lean Beef Mince (Protein: 30g | Calories: 200)</li>
+          <li>½ Cup Rice (Protein: 3g | Calories: 130)</li>
+          <li>Steamed Veggies (Protein: 2g | Calories: 20)</li>
+          <li>Optional: 10 Almonds (Protein: 2g | Calories: 60)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-header">Day 7</div>
+    <div class="day-content">
+      <div class="meal-section">
+        <h3>12pm</h3>
+        <ul>
+          <li>Protein Powder Shake (Protein: 25g | Calories: 120)</li>
+          <li>2 Boiled Eggs (Protein: 12g | Calories: 140)</li>
+          <li>1 Slice Bread (Protein: 3g | Calories: 70)</li>
+          <li>Salad (Protein: 1g | Calories: 10)</li>
+        </ul>
+      </div>
+      <div class="meal-section">
+        <h3>3pm</h3>
+        <ul>
+          <li>Greek Yogurt (Protein: 10g | Calories: 100)</li>
+          <li>1 Apple (Protein: 0g | Calories: 52)</li>
+        </ul>
+      </div>
+      <div class="meal-section">
+        <h3>7pm</h3>
+        <ul>
+          <li>120g Chicken (Protein: 30g | Calories: 200)</li>
+          <li>½ Cup Rice (Protein: 3g | Calories: 130)</li>
+          <li>Veggies (Protein: 2g | Calories: 20)</li>
+          <li>1 tsp Olive Oil (Protein: 0g | Calories: 40)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
 </section>
 
-<footer>
-  <p>&copy; 2025 IF & Fitness Plan</p>
-</footer>
-
 <script>
-const headers = document.querySelectorAll('.day-header');
-headers.forEach(header => {
-  header.addEventListener('click', () => {
-    const content = header.nextElementSibling;
-    const isOpen = content.style.display === 'block';
-    
-    // Close all day contents
-    document.querySelectorAll('.day-content').forEach(dc => dc.style.display = 'none');
-
-    // Toggle current day
-    content.style.display = isOpen ? 'none' : 'block';
+  const headers = document.querySelectorAll('.day-header');
+  headers.forEach(header => {
+    header.addEventListener('click', () => {
+      const content = header.nextElementSibling;
+      const isOpen = content.style.display === 'block';
+      document.querySelectorAll('.day-content').forEach(dc => dc.style.display = 'none');
+      content.style.display = isOpen ? 'none' : 'block';
+    });
   });
-});
 </script>
 </body>
 </html>

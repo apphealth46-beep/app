@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Food Log</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+body { font-family: Arial, sans-serif; padding: 20px; }
+nav a.active { background: #ff9800; font-weight: bold; }
+form { max-width: 500px; margin: 0 auto; }
+label { display: block; margin-top: 15px; font-weight: bold; }
+input[type="text"], input[type="date"], select, textarea { width: 100%; padding: 8px; margin-top: 5px; border-radius: 5px; border: 1px solid #ccc; }
+button { margin-top: 15px; padding: 10px 15px; background: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; }
+button:hover { background: #45a049; }
+.success { margin-top: 15px; color: green; font-weight: bold; text-align: center; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Daily Food Log</h1>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="meal-plan.html">Meal Plan</a>
+  <a href="workout-plan.html">Workout Plan</a>
+  <a href="tips.html">Tips</a>
+  <a href="daily-log.html" class="active">Daily Log</a>
+  <a href="saved-entries.html">Saved Entries</a>
+  <a href="progress-tracker.html" >Progress Tracker</a>
+
+</nav>
+
+<section>
+  <form id="foodForm">
+    <label for="date">Select Date</label>
+    <input type="date" id="date" required>
+
+    <label for="mealTime">Meal Time</label>
+    <select id="mealTime" required>
+      <option value="">--Choose Meal--</option>
+      <option value="12pm">12pm</option>
+      <option value="3pm">3pm</option>
+      <option value="7pm">7pm</option>
+      <option value="Snack">Snack</option>
+    </select>
+
+    <label for="foodItems">Food Items (comma separated)</label>
+    <textarea id="foodItems" rows="3" placeholder="E.g., Protein Shake, 2 Boiled Eggs, Salad" required></textarea>
+
+    <button type="submit">Save Entry</button>
+    <div class="success" id="successMsg" style="display:none;">Entry saved successfully!</div>
+  </form>
+</section>
+
+<script>
+// Save entry to localStorage without displaying
+document.getElementById('foodForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const date = document.getElementById('date').value;
+  const mealTime = document.getElementById('mealTime').value;
+  const foodItems = document.getElementById('foodItems').value;
+
+  if (!date || !mealTime || !foodItems) return;
+
+  let entries = JSON.parse(localStorage.getItem('foodEntries')) || [];
+  entries.push({ date, mealTime, foodItems });
+  localStorage.setItem('foodEntries', JSON.stringify(entries));
+
+  // Show success message
+  const successMsg = document.getElementById('successMsg');
+  successMsg.style.display = 'block';
+  setTimeout(() => successMsg.style.display = 'none', 2000);
+
+  this.reset();
+});
+</script>
+
+</body>
+</html>

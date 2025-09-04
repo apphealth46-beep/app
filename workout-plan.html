@@ -21,7 +21,12 @@
 <nav>
   <a href="index.html">Home</a>
   <a href="meal-plan.html">Meal Plan</a>
+  <a href="workout-plan.html" class="active">Workout Plan</a>
   <a href="tips.html">Tips</a>
+  <a href="daily-log.html" >Daily Log</a>
+  <a href="saved-entries.html" >Saved Entries</a>
+  <a href="progress-tracker.html" >Progress Tracker</a>
+
 </nav>
 
 <section>
@@ -65,10 +70,6 @@
   </div>
 </section>
 
-<footer>
-  <p>&copy; 2025 IF & Fitness Plan</p>
-</footer>
-
 <script>
 const headers = document.querySelectorAll('.day-header');
 headers.forEach(header => {
@@ -76,10 +77,7 @@ headers.forEach(header => {
     const content = header.nextElementSibling;
     const isOpen = content.style.display === 'block';
     
-    // Close all day contents
     document.querySelectorAll('.day-content').forEach(dc => dc.style.display = 'none');
-
-    // Toggle current day
     content.style.display = isOpen ? 'none' : 'block';
   });
 });

@@ -1,12 +1,81 @@
+
 body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f9f9f9; line-height:1.6; }
 header { background: #4CAF50; color: white; padding: 1rem 0; text-align:center; }
 header h1 { margin:0; }
-nav { background:#333; text-align:center; padding:0.5rem 0; }
-nav a { color:white; text-decoration:none; margin:0 10px; padding:5px 10px; display:inline-block; }
-nav a:hover { background:#4CAF50; border-radius:4px; }
+nav {
+  background:#333;
+  text-align:center;
+  padding:0.5rem 0;
+}
+nav a {
+  color:white;
+  text-decoration:none;
+  margin:0 10px;
+  padding:5px 10px;
+  display:inline-block;
+  border-radius:4px;
+}
+nav a:hover {
+  background:#ff9800;
+}
+
+nav a.active {
+  background: #4CAF50; /* Highlight color for active page */
+  font-weight: bold;
+}
+
 section { max-width:800px; margin:2rem auto; background:white; padding:1.5rem; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
 h2 { color:#4CAF50; margin-top:0; }
 ul { list-style-type:none; padding-left:0; }
 li { margin-bottom:0.5rem; }
 footer { background:#333; color:white; text-align:center; padding:1rem; margin-top:2rem; }
 .meal-plan, .workout-plan { background:#f4f4f4; padding:1rem; margin-bottom:1rem; border-radius:8px; }
+.day-header {
+  background:#4CAF50; color:white; padding:10px; cursor:pointer; margin-bottom:5px; border-radius:5px;
+}
+.day-header:hover { background:#45a049; }
+.day-content { display:none; padding:10px; background:#f4f4f4; border-radius:5px; margin-bottom:10px; }
+.meal-item { display:flex; justify-content:space-between; padding:3px 0; border-bottom:1px solid #ddd; }
+.meal-item:last-child { border-bottom:none; }
+.meal-name { font-weight:bold; }
+
+
+.meal-section h3 {
+  background: #4CAF50;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.meal-section ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+
+.meal-section ul li {
+  padding: 3px 0;
+}
+
+.tips-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Space between tips */
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.tip-card {
+  background: #f4f4f4;
+  border-left: 5px solid #4CAF50;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  line-height: 1.6;
+}
+
+.tip-card:hover {
+  background: #e8f5e9;
+}
