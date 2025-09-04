@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meal Plan</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .day-header {
+    background:#4CAF50; color:white; padding:10px; cursor:pointer; margin-bottom:5px; border-radius:5px;
+  }
+  .day-header:hover { background:#45a049; }
+  .day-content { display:none; padding:10px; background:#f4f4f4; border-radius:5px; margin-bottom:10px; }
+  .meal-item { display:flex; justify-content:space-between; padding:3px 0; border-bottom:1px solid #ddd; }
+  .meal-item:last-child { border-bottom:none; }
+  .meal-name { font-weight:bold; }
+</style>
+</head>
+<body>
+<header>
+  <h1>7-Day Meal Plan (~1500 kcal)</h1>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="workout-plan.html">Workout Plan</a>
+  <a href="tips.html">Tips</a>
+</nav>
+
+<section>
+
+  <div class="day">
+    <div class="day-header">Day 1</div>
+    <div class="day-content">
+      <div class="meal-item"><span class="meal-name">12pm: Protein Shake + 2 Boiled Eggs + Bread + Salad</span><span>Protein: 51g | Calories: 340</span></div>
+      <div class="meal-item"><span class="meal-name">3pm: Greek Yogurt + Apple</span><span>Protein: 10g | Calories: 130</span></div>
+      <div class="meal-item"><span class="meal-name">7pm: 120g Chicken + ½ Cup Rice + Veggies + 1 tsp Olive Oil</span><span>Protein: 30g | Calories: 350</span></div>
+      <div class="meal-item"><span class="meal-name">Optional: 1 Boiled Egg or 10 Almonds</span><span>Protein: 6g | Calories: 70</span></div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-header">Day 2</div>
+    <div class="day-content">
+      <div class="meal-item"><span class="meal-name">12pm: Tuna Salad + 1 tsp Olive Oil</span><span>Protein: 30g | Calories: 250</span></div>
+      <div class="meal-item"><span class="meal-name">3pm: Banana + 10 Almonds</span><span>Protein: 2g | Calories: 120</span></div>
+      <div class="meal-item"><span class="meal-name">7pm: 120g Grilled Fish + ½ Medium Sweet Potato + Veggies</span><span>Protein: 30g | Calories: 320</span></div>
+      <div class="meal-item"><span class="meal-name">Optional: 1 Boiled Egg</span><span>Protein: 6g | Calories: 70</span></div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-header">Day 3</div>
+    <div class="day-content">
+      <div class="meal-item"><span class="meal-name">12pm: 2 Scrambled Eggs + Bread + ½ Avocado + Tomato</span><span>Protein: 14g | Calories: 300</span></div>
+      <div class="meal-item"><span class="meal-name">3pm: Greek Yogurt + Berries</span><span>Protein: 10g | Calories: 120</span></div>
+      <div class="meal-item"><span class="meal-name">7pm: 120g Lean Beef Mince + ½ Cup Rice + Veggies</span><span>Protein: 30g | Calories: 350</span></div>
+      <div class="meal-item"><span class="meal-name">Optional: 10 Almonds</span><span>Protein: 2g | Calories: 70</span></div>
+    </div>
+  </div>
+
+  <!-- Repeat Days 4–7 with same format -->
+
+</section>
+
+<footer>
+  <p>&copy; 2025 IF & Fitness Plan</p>
+</footer>
+
+<script>
+const headers = document.querySelectorAll('.day-header');
+headers.forEach(header => {
+  header.addEventListener('click', () => {
+    const content = header.nextElementSibling;
+    const isOpen = content.style.display === 'block';
+    
+    // Close all day contents
+    document.querySelectorAll('.day-content').forEach(dc => dc.style.display = 'none');
+
+    // Toggle current day
+    content.style.display = isOpen ? 'none' : 'block';
+  });
+});
+</script>
+</body>
+</html>

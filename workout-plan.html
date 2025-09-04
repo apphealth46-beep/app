@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workout Plan</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .day-header {
+    background:#4CAF50; color:white; padding:10px; cursor:pointer; margin-bottom:5px; border-radius:5px;
+  }
+  .day-header:hover { background:#45a049; }
+  .day-content { display:none; padding:10px; background:#f4f4f4; border-radius:5px; margin-bottom:10px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>3-Day Home Dumbbell + Bodyweight Workout</h1>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="meal-plan.html">Meal Plan</a>
+  <a href="tips.html">Tips</a>
+</nav>
+
+<section>
+  <div class="day">
+    <div class="day-header">Day 1 – Full Body</div>
+    <div class="day-content">
+      <ul>
+        <li>Dumbbell Squat – 3x12</li>
+        <li>Dumbbell Bench Press – 3x10–12</li>
+        <li>Dumbbell Row – 3x10 each side</li>
+        <li>Dumbbell Shoulder Press – 3x10</li>
+        <li>Plank – 3x30 sec</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-header">Day 2 – Lower Body + Core</div>
+    <div class="day-content">
+      <ul>
+        <li>Dumbbell Deadlift – 3x12</li>
+        <li>Lunges – 3x10 each leg</li>
+        <li>Dumbbell Glute Bridge – 3x12</li>
+        <li>Russian Twists – 3x12 each side</li>
+        <li>Leg Raises – 3x10</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-header">Day 3 – Upper Body</div>
+    <div class="day-content">
+      <ul>
+        <li>Bicep Curls – 3x12</li>
+        <li>Shoulder Press – 3x12</li>
+        <li>Dumbbell Row – 3x10 each side</li>
+        <li>Chest Fly – 3x10–12</li>
+        <li>Side Plank – 3x20 sec each side</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 IF & Fitness Plan</p>
+</footer>
+
+<script>
+const headers = document.querySelectorAll('.day-header');
+headers.forEach(header => {
+  header.addEventListener('click', () => {
+    const content = header.nextElementSibling;
+    const isOpen = content.style.display === 'block';
+    
+    // Close all day contents
+    document.querySelectorAll('.day-content').forEach(dc => dc.style.display = 'none');
+
+    // Toggle current day
+    content.style.display = isOpen ? 'none' : 'block';
+  });
+});
+</script>
+</body>
+</html>
